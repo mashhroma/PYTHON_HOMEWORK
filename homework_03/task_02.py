@@ -30,14 +30,48 @@ score_dict = { 'A': 1, 'E': 1, 'I': 1, 'O': 1, 'U': 1, 'L': 1, 'N': 1, 'S': 1, '
               'Ь': 3, 'Я': 3, 'Й': 4, 'Ы': 4, 'Ж': 5, 'З': 5, 'Х': 5, 'Ц': 5, 'Ч': 5, 'Ш': 8, 'Э': 8, 
               'Ю': 8, 'Ф': 10, 'Щ': 10, 'Ъ': 10 }
 
+print()
 print('Настольная игра Скрабл (Scrabble)')
 print('Узнай стоимость своего слова.')
+print()
+round = int(input('Введите количество раундов: '))
+name_player_01 = input('Введите имя первого игрока: ')
+name_player_02 = input('Введите имя второго игрока: ')
 
-word = input('Введите слово: ').upper()
-word_cost = 0
+sum_player_01 = 0
+sum_player_02 = 0
+count = 1
 
-for item in word:
-    word_cost += score_dict[item]
-    print(f'Буква {item} = {score_dict[item]}.')
+while count <= round:
+    print()
+    print(f'Раунд № {count}!')
+    print()
 
-print(f'Стоимость слова {word} равна {word_cost}.')
+    player_01 = input(f'{name_player_01}, введите слово: ').upper()
+    cost_player_01 = 0
+    for item in player_01:
+        cost_player_01 += score_dict[item]
+        print(f'Буква {item} = {score_dict[item]}.')
+    sum_player_01 += cost_player_01
+    print(f'Стоимость слова {player_01} равна {cost_player_01}.')
+    print(f'Всего очков у игрока {name_player_01}: {sum_player_01}.')
+
+    print()
+
+    player_02 = input(f'{name_player_02}, введите слово: ').upper()
+    cost_player_02 = 0
+    for item in player_02:
+        cost_player_02 += score_dict[item]
+        print(f'Буква {item} = {score_dict[item]}.')
+    sum_player_02 += cost_player_02
+    print(f'Стоимость слова {player_02} равна {cost_player_02}.')
+    print(f'Всего очков у игрока {name_player_02}: {sum_player_02}.')
+
+    count +=1
+
+print()
+if sum_player_01 > sum_player_02:
+    print(f'Ура!!! С количеством баллов {sum_player_01} побеждает {name_player_01}!!!')
+else:
+    print(f'Ура!!! С количеством баллов {sum_player_02} побеждает {name_player_02}!!!')
+print()
